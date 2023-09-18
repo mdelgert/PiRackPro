@@ -1,0 +1,12 @@
+---
+- name: Copy .ssh folder contents
+  hosts: testmachines
+  gather_facts: false  # We don't need to gather facts for this task
+
+  tasks:
+    - name: Copy .ssh folder contents to remote server
+      ansible.builtin.copy:
+        src: ~/.ssh/
+        dest: ~/.ssh/
+        remote_src: yes
+      become: true  # If you need elevated privileges to write to the destination folder

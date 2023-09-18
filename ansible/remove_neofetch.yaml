@@ -1,6 +1,6 @@
 ---
 - name: Uninstall neofetch package
-  hosts: virtualmachines
+  hosts: rackmachines
   become: yes  # This is used to escalate privileges (sudo)
   tasks:
     - name: Uninstall neofetch (apt for Debian/Ubuntu)

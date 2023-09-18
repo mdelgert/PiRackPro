@@ -1,6 +1,6 @@
 ---
 - name: Backup and replace /boot/config.txt
-  hosts: virtualmachines
+  hosts: rackmachines
   become: yes  # This enables privilege escalation (sudo)
 
   tasks:

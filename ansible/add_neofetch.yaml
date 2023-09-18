@@ -1,6 +1,6 @@
 ---
 - name: Install neofetch package
-  hosts: virtualmachines
+  hosts: rackmachines
   become: yes  # This is used to escalate privileges (sudo)
   tasks:
     - name: Update package cache (apt for Debian/Ubuntu)

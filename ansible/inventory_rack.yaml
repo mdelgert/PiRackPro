@@ -1,4 +1,4 @@
-virtualmachines:
+rackmachines:
   hosts:
     vm01:
       ansible_host: p1

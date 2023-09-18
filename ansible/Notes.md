@@ -44,3 +44,8 @@ ansible-playbook -i inventory_all.yaml add_libsensors.yaml
 ansible-galaxy install geerlingguy.docker
 ansible-playbook -i inventory_test.yaml geerlingguy_docker.yaml
 ```
+
+### Example sync ssh
+```bash
+ansible-playbook -i inventory_test.yaml sync_ssh.yaml
+```

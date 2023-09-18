@@ -1,6 +1,6 @@
 ---
 - name: Copy and make file executable
-  hosts: virtualmachines
+  hosts: rackmachines
   become: yes  # Use sudo to become a privileged user
   tasks:
     - name: Backup /etc/modules

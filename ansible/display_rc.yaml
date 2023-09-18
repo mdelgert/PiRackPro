@@ -1,6 +1,6 @@
 ---
 - name: Add "display &" to /etc/rc.local
-  hosts: virtualmachines
+  hosts: rackmachines
   become: yes  # You may need to become root or use sudo to edit /etc/rc.local
   tasks:
     - name: Read the content of /etc/rc.local

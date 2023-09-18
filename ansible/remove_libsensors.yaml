@@ -1,6 +1,6 @@
 ---
 - name: Remove libsensors5
-  hosts: your_target_host
+  hosts: allmachines
   become: yes  # This allows Ansible to become a superuser (e.g., sudo)
 
   tasks:

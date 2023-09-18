@@ -1,6 +1,6 @@
 ---
 - name: Install libsensors5
-  hosts: virtualmachines
+  hosts: allmachines
   become: yes  # This allows Ansible to become a superuser (e.g., sudo)
 
   tasks:

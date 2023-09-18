@@ -1,5 +1,5 @@
 - name: My first play
-  hosts: virtualmachines
+  hosts: rackmachines
   tasks:
    - name: Ping my hosts
      ansible.builtin.ping:
