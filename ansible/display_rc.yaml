@@ -1,0 +1,15 @@
+---
+- name: Add "display &" to /etc/rc.local
+  hosts: virtualmachines
+  become: yes  # You may need to become root or use sudo to edit /etc/rc.local
+  tasks:
+    - name: Read the content of /etc/rc.local
+      slurp:
+        src: /etc/rc.local
+      register: rc_local_content
+    - name: Add "display &" to /etc/rc.local if not present
+      lineinfile:
+        path: /etc/rc.local
+        insertbefore: '^exit 0$'
+        line: 'display &'
+      when: "'display &' not in rc_local_content.content | b64decode"
