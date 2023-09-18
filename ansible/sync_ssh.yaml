@@ -1,7 +1,7 @@
 ---
 - name: Sync ~/.ssh folder
   hosts: testmachines
-  become: yes  # If you need sudo privileges to access the remote user's home directory
+  #become: yes  # If you need sudo privileges to access the remote user's home directory
 
   tasks:
     - name: Ensure ~/.ssh directory exists
