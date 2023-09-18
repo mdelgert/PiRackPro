@@ -6,8 +6,12 @@ https://galaxy.ansible.com/geerlingguy/docker
 
 ### Setup
 ```bash
+sudo apt install python3-pip
 python3 -m pip install --user ansible
 ```
+
+### Add the following line to .bashrc
+export PATH=$PATH:~/.local/bin
 
 ### Verify the hosts in your inventory.
 ```bash
@@ -16,7 +20,7 @@ ansible-inventory -i inventory_all.yaml --list
 
 ### Ping inventory.
 ```bash
-ansible virtualmachines -m ping -i inventory_all.yaml
+ansible allmachines -m ping -i inventory_all.yaml
 ```
 
 ### Example add neofetch playbook

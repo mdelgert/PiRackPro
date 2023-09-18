@@ -1,12 +1,30 @@
 ---
-- name: Copy .ssh folder contents
+- name: Sync ~/.ssh folder
   hosts: testmachines
-  gather_facts: false  # We don't need to gather facts for this task
+  become: yes  # If you need sudo privileges to access the remote user's home directory
 
   tasks:
-    - name: Copy .ssh folder contents to remote server
-      ansible.builtin.copy:
-        src: ~/.ssh/
-        dest: ~/.ssh/
-        remote_src: yes
-      become: true  # If you need elevated privileges to write to the destination folder
+    - name: Ensure ~/.ssh directory exists
+      file:
+        path: ~/.ssh
+        state: directory
+        owner: mdelgert  # Replace with the remote user's username
+        group: mdelgert  # Replace with the remote user's group
+        mode: "0700"
+
+    - name: Copy local ~/.ssh folder to remote server
+      synchronize:
+        src: "{{ lookup('env', 'HOME') }}/.ssh"  # Use the environment variable to get the user's home directory
+        dest: "{{ lookup('env', 'HOME') }}"
+        mode: push
+      environment:
+        RSYNC_RSH: "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /path/to/your/ssh/key"
+
+    - name: Ensure permissions on ~/.ssh folder
+      file:
+        path: ~/.ssh
+        state: directory
+        owner: mdelgert  # Replace with the remote user's username
+        group: mdelgert  # Replace with the remote user's group
+        mode: "0700"
+
