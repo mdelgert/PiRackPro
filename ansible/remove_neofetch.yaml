@@ -1,0 +1,16 @@
+---
+- name: Uninstall neofetch package
+  hosts: virtualmachines
+  become: yes  # This is used to escalate privileges (sudo)
+  tasks:
+    - name: Uninstall neofetch (apt for Debian/Ubuntu)
+      apt:
+        name: neofetch
+        state: absent
+      when: ansible_os_family == 'Debian' or ansible_os_family == 'Ubuntu'
+
+    - name: Uninstall neofetch (yum for CentOS)
+      yum:
+        name: neofetch
+        state: absent
+      when: ansible_os_family == 'RedHat'

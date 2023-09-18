@@ -1,0 +1,23 @@
+---
+- name: Backup and replace /boot/config.txt
+  hosts: virtualmachines
+  become: yes  # This enables privilege escalation (sudo)
+
+  tasks:
+    - name: Create a backup of the existing config.txt
+      command: cp /boot/config.txt /boot/config.txt.backup
+      register: backup_result
+      ignore_errors: yes  # Ignore errors if the backup file already exists
+
+    - name: Copy your custom config.txt to the target server
+      copy:
+        src: path/to/your/custom/config.txt
+        dest: /boot/config.txt
+      notify: reload_raspberry_pi
+
+  handlers:
+    - name: Reload Raspberry Pi (or restart the service as needed)
+      shell: /sbin/reboot  # You may need to adjust this command based on your system
+      async: 1
+      poll: 0
+      become: yes
