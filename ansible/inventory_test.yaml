@@ -1,4 +1,4 @@
-virtualmachines:
+testmachines:
   hosts:
     vm01:
-      ansible_host: p2
+      ansible_host: p1

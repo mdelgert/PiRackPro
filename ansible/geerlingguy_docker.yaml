@@ -1,0 +1,9 @@
+- hosts: testmachines
+  become: yes  # Use sudo to become a privileged user
+
+  vars:
+    docker_users:
+      - mdelgert
+      
+  roles:
+    - geerlingguy.docker
