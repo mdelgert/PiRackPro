@@ -8,9 +8,3 @@
         name: neofetch
         state: absent
       when: ansible_os_family == 'Debian' or ansible_os_family == 'Ubuntu'
-
-    - name: Uninstall neofetch (yum for CentOS)
-      yum:
-        name: neofetch
-        state: absent
-      when: ansible_os_family == 'RedHat'

@@ -8,5 +8,3 @@ virtualmachines:
       ansible_host: p3
     vm04:
       ansible_host: p4
-    vm05:
-      ansible_host: b1

@@ -1,0 +1,11 @@
+---
+- name: Remove libsensors5
+  hosts: your_target_host
+  become: yes  # This allows Ansible to become a superuser (e.g., sudo)
+
+  tasks:
+    - name: Remove libsensors5 package
+      apt:
+        name: libsensors5
+        state: absent
+      become: yes

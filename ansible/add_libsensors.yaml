@@ -1,0 +1,16 @@
+---
+- name: Install libsensors5
+  hosts: virtualmachines
+  become: yes  # This allows Ansible to become a superuser (e.g., sudo)
+
+  tasks:
+    - name: Update APT package cache
+      apt:
+        update_cache: yes
+      become: yes
+
+    - name: Install libsensors5 package
+      apt:
+        name: libsensors5
+        state: present
+      become: yes
