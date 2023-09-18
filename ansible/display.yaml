@@ -3,25 +3,44 @@
   hosts: virtualmachines
   become: yes  # Use sudo to become a privileged user
   tasks:
-    - name: Download display file from GitHub
-      get_url:
-        url: https://github.com/mdelgert/PiRackPro/raw/main/SKU_RM0004/display
-        dest: /usr/bin/display
-        mode: '0755'  # Set the file permissions to make it executable
-    - name: Add display to rc.local
-      lineinfile:
-        path: /etc/rc.local
-        insertbefore: '^\s*exit 0'
-        line: 'display &'
+    - name: Backup /etc/modules
+      copy:
+        src: /etc/modules
+        dest: /etc/modules.bak
+      register: backup_result
+    - name: Backup /etc/rc.local
+      copy:
+        src: /etc/rc.local
+        dest: /etc/rc.local.bak
+      register: backup_result
     - name: Backup /boot/config.txt
       copy:
         src: /boot/config.txt
         dest: /boot/config.txt.bak
       register: backup_result
       ignore_errors: yes  # Ignore errors if the file doesn't exist
+    - name: Check if "display &" already exists in /etc/rc.local
+      shell: grep -q 'display &' /etc/rc.local
+      register: grep_result
+      changed_when: false  # Do not treat this as a change if the string is found
+    - name: Add "display &" to /etc/rc.local
+      lineinfile:
+        path: /etc/rc.local
+        insertbefore: '^exit 0$'
+        line: 'display &'
+      when: grep_result.rc != 0  # Only add the line if it doesn't exist
     - name: Replace /boot/config.txt with new content
       get_url:
         url: https://raw.githubusercontent.com/mdelgert/PiRackPro/main/ansible/config.txt
         dest: /boot/config.txt
+    - name: Replace /etc/modules with new content
+      get_url:
+        url: https://raw.githubusercontent.com/mdelgert/PiRackPro/main/ansible/modules
+        dest: /etc/modules
+    - name: Download display file from GitHub
+      get_url:
+        url: https://github.com/mdelgert/PiRackPro/raw/main/SKU_RM0004/display
+        dest: /usr/bin/display
+        mode: '0755'  # Set the file permissions to make it executable
     - name: Reboot the system
       reboot:
