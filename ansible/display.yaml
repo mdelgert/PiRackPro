@@ -13,3 +13,15 @@
         path: /etc/rc.local
         insertbefore: '^\s*exit 0'
         line: 'display &'
+    - name: Backup /boot/config.txt
+      copy:
+        src: /boot/config.txt
+        dest: /boot/config.txt.bak
+      register: backup_result
+      ignore_errors: yes  # Ignore errors if the file doesn't exist
+    - name: Replace /boot/config.txt with new content
+      get_url:
+        url: https://raw.githubusercontent.com/mdelgert/PiRackPro/main/ansible/config.txt
+        dest: /boot/config.txt
+    - name: Reboot the system
+      reboot:
