@@ -1,0 +1,15 @@
+---
+- name: Copy and make file executable
+  hosts: virtualmachines
+  become: yes  # Use sudo to become a privileged user
+  tasks:
+    - name: Download display file from GitHub
+      get_url:
+        url: https://github.com/mdelgert/PiRackPro/raw/main/SKU_RM0004/display
+        dest: /usr/bin/display
+        mode: '0755'  # Set the file permissions to make it executable
+    - name: Add display to rc.local
+      lineinfile:
+        path: /etc/rc.local
+        insertbefore: '^\s*exit 0'
+        line: 'display &'
