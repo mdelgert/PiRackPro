@@ -1,0 +1,30 @@
+---
+- name: Copy .smbcredentials, create directory, and update /etc/fstab
+  hosts: rackmachines  # Replace with the appropriate group or list of hosts
+  become: yes
+
+  tasks:
+    - name: Copy .smbcredentials
+      copy:
+        src: ~/.smbcredentials
+        dest: /home/{{ ansible_user }}/.smbcredentials
+      become_user: "{{ ansible_user }}"
+      when: ansible_user is defined  # Skip this task if ansible_user is not defined
+
+    - name: Create /mnt/d1 directory
+      file:
+        path: /mnt/d1
+        state: directory
+      become_user: root
+
+    - name: Add line to /etc/fstab if it doesn't exist
+      blockinfile:
+        path: /etc/fstab
+        block: |
+          //b1/d1 /mnt/d1 cifs credentials=/home/{{ ansible_user }}/.smbcredentials,uid=1000,gid=1000,file_mode=0664,dir_mode=0775 0 0
+      become_user: root
+
+    - name: Create symbolic link
+      command: ln -s /mnt/d1 ~/shared
+      become_user: "{{ ansible_user }}"
+      when: ansible_user is defined

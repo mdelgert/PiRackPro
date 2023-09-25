@@ -1,0 +1,24 @@
+---
+- name: Install Git and Configure Git
+  hosts: rackmachines
+  become: yes  # This allows Ansible to become a superuser (e.g., sudo) to install packages
+
+  tasks:
+    - name: Update package cache (Apt)
+      apt:
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Install Git
+      package:
+        name: git
+        state: present
+      when: ansible_os_family == "Debian"
+
+    # - name: Configure Git user.email
+    #   command: git config --global user.email "mdelgert@example.com"
+    #   become_user: your_username  # Replace with the username you want to set the configuration for
+
+    # - name: Configure Git user.name
+    #   command: git config --global user.name "First Last"
+    #   become_user: your_username  # Replace with the username you want to set the configuration for

@@ -53,3 +53,13 @@ ansible-playbook -i inventory_test.yaml geerlingguy_docker.yaml
 ```bash
 ansible-playbook -i inventory_test.yaml sync_ssh.yaml
 ```
+
+### Example install git
+```bash
+ansible-playbook -i inventory_rack.yaml add_git.yaml
+```
+
+### Example setup sbm
+```bash
+ansible-playbook -i inventory_rack.yaml add_smb.yaml
+```
