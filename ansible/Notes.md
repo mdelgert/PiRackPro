@@ -63,3 +63,8 @@ ansible-playbook -i inventory_rack.yaml add_git.yaml
 ```bash
 ansible-playbook -i inventory_rack.yaml add_smb.yaml
 ```
+
+### Setup glusterfs
+```bash
+ansible-playbook -i inventory_rack.yaml add_glusterfs.yaml
+```

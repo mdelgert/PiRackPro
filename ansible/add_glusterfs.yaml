@@ -1,0 +1,16 @@
+---
+- name: Install and configure GlusterFS server
+  hosts: rackmachines
+  become: yes
+  tasks:
+    - name: Install GlusterFS server package
+      apt:
+        name: glusterfs-server
+        state: present
+        update_cache: yes
+
+    - name: Start GlusterD service
+      systemd:
+        name: glusterd
+        enabled: yes
+        state: started
