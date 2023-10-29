@@ -3,7 +3,7 @@ https://nickhowell.uk/2016/07/23/raspberry-pi-nas-with-gluster/
 https://pimylifeup.com/raspberry-pi-samba/
 
 ```bash
-apt-get install samba
+sudo apt install samba
 sudo cp /etc/samba/smb.conf /etc/samba/smb.bk
 sudo nano /etc/samba/smb.conf
 sudo service smbd restart
