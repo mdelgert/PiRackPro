@@ -70,19 +70,23 @@ sudo smbpasswd -a mdelgert
    directory mask = 0777
    public = no
 
+### Docker DHCP loses ip at random issue - https://raspberrypi.stackexchange.com/questions/136320/raspberry-pi-loses-ipv4-address-randomly-but-keeps-ipv6-address
+```bash
+sudo nano /etc/dhcpcd.conf
+# add the following to the end
+#denyinterfaces veth*
+```
+
 ### Docker
 ```bash
 sudo curl -fsSL https://get.docker.com | bash
-sudo reboot
 sudo usermod -aG docker $USER
+sudo reboot
 docker run mdelgert/hello-world
 ```
-### Docker DHCP loses ip at random issue
-```bash
-sudo nano /etc/dhcpcd.conf
-```
 
-### Portainer
+### Portainer Setup
+https://docs.portainer.io/user/docker/host/setup
 ```bash
 docker volume create portainer_data
 docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ee:latest
@@ -98,3 +102,4 @@ https://raw.githubusercontent.com/novaspirit/pi-hosted/master/template/portainer
 ### Default application templates
 Cloudflare DDNS
 Nginx Proxy Manager v2 with Sqllite
+DashMachine 
