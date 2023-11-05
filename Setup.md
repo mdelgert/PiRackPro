@@ -1,3 +1,6 @@
+### Download this image new image seems to have issues
+wget https://downloads.raspberrypi.com/raspios_lite_arm64/images/raspios_lite_arm64-2023-05-03/2023-05-03-raspios-bullseye-arm64-lite.img.xz
+
 ### SSH setup
 ```bash
 # Copy config SSH_KEYS
@@ -74,3 +77,24 @@ sudo reboot
 sudo usermod -aG docker $USER
 docker run mdelgert/hello-world
 ```
+### Docker DHCP loses ip at random issue
+```bash
+sudo nano /etc/dhcpcd.conf
+```
+
+### Portainer
+```bash
+docker volume create portainer_data
+docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ee:latest
+```
+
+### Default Templates
+https://raw.githubusercontent.com/portainer/templates/master/templates-2.0.json
+
+### Pi Hosted
+https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/template/portainer-v2-arm64.json
+https://raw.githubusercontent.com/novaspirit/pi-hosted/master/template/portainer-v2-amd64.json
+
+### Default application templates
+Cloudflare DDNS
+Nginx Proxy Manager v2 with Sqllite
