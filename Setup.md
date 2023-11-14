@@ -103,3 +103,37 @@ https://raw.githubusercontent.com/novaspirit/pi-hosted/master/template/portainer
 Cloudflare DDNS
 Nginx Proxy Manager v2 with Sqllite
 DashMachine 
+
+### Python setup
+https://virtualenv.pypa.io/en/latest/installation.html
+https://pypi.org/project/pipx/
+
+```bash
+python3 -m pip install --user pipx
+python3 -m pipx ensurepath
+sudo apt-get install python3-venv
+pipx install virtualenv
+virtualenv --help
+virtualenv venv
+source venv/bin/activate
+```
+
+### Update controller
+https://jamesachambers.com/fixing-storage-adapters-for-raspberry-pi-via-firmware-updates/
+```bash
+sudo nano /boot/cmdline.txt
+```
+
+#### Enable TRIM
+https://www.jeffgeerling.com/blog/2020/enabling-trim-on-external-ssd-on-raspberry-pi
+
+```bash
+sudo fstrim -v /
+lsblk -D
+sudo su
+apt-get install -y sg3-utils lsscsi hdparm
+sudo hdparm -I /dev/sda | grep "TRIM supported"
+sudo hdparm -I /dev/sda
+sg_vpd -p bl /dev/sda
+```
+echo unmap > /sys/devices/platform/scb/fd500000.pcie/pci0000:00/0000:00:00.0/0000:01:00.0/usb2/2-2/2-2:1.0/host0/target0:0:0/0:0:0:0/scsi_disk/0:0:0:0/provisioning_mode
