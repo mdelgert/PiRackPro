@@ -27,10 +27,10 @@ sudo nano /boot/config.txt
 ```
 
 # PoE Hat Fan Speeds
-dtparam=poe_fan_temp0=50000
-dtparam=poe_fan_temp1=54000
-dtparam=poe_fan_temp2=58000
-dtparam=poe_fan_temp3=62000
+dtparam=poe_fan_temp0=58000
+dtparam=poe_fan_temp1=60000
+dtparam=poe_fan_temp2=62000
+dtparam=poe_fan_temp3=64000
 
 ### Display
 ```bash
