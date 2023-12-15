@@ -135,5 +135,12 @@ apt-get install -y sg3-utils lsscsi hdparm
 sudo hdparm -I /dev/sda | grep "TRIM supported"
 sudo hdparm -I /dev/sda
 sg_vpd -p bl /dev/sda
-```
+find /sys/ -name provisioning_mode -exec grep -H . {} + | sort
 echo unmap > /sys/devices/platform/scb/fd500000.pcie/pci0000:00/0000:00:00.0/0000:01:00.0/usb2/2-2/2-2:1.0/host0/target0:0:0/0:0:0:0/scsi_disk/0:0:0:0/provisioning_mode
+lsusb
+nano /etc/udev/rules.d/10-trim.rules
+sudo systemctl enable fstrim.timer
+```
+
+### Example
+ACTION=="add|change", ATTRS{idVendor}=="174c", ATTRS{idProduct}=="55aa", SUBSYSTEM=="scsi_disk", ATTR{provisioning_mode}="unmap"
