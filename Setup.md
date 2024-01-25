@@ -70,13 +70,6 @@ sudo smbpasswd -a mdelgert
    directory mask = 0777
    public = no
 
-### Docker DHCP loses ip at random issue - https://raspberrypi.stackexchange.com/questions/136320/raspberry-pi-loses-ipv4-address-randomly-but-keeps-ipv6-address
-```bash
-sudo nano /etc/dhcpcd.conf
-# add the following to the end
-#denyinterfaces veth*
-```
-
 ### Docker
 ```bash
 sudo curl -fsSL https://get.docker.com | bash
@@ -144,3 +137,23 @@ sudo systemctl enable fstrim.timer
 
 ### Example
 ACTION=="add|change", ATTRS{idVendor}=="174c", ATTRS{idProduct}=="55aa", SUBSYSTEM=="scsi_disk", ATTR{provisioning_mode}="unmap"
+
+### Getting Started with Network Manager
+https://forums.raspberrypi.com/viewtopic.php?t=357739
+New Raspberry PI OS uses nmcli going to see if the Docker issue goes away
+
+### MAY NO LONGER BE AND ISSUE TRYING TESTING DOCKER WITH LOTS OF CONTAINERS ####################################################
+
+### Newer raspberry pi os missing dhcpcd.conf
+https://www.youtube.com/watch?v=gHItT2CXMlg
+```bash
+sudo apt install dhcpcd
+```
+
+### Docker DHCP loses ip at random issue - https://raspberrypi.stackexchange.com/questions/136320/raspberry-pi-loses-ipv4-address-randomly-but-keeps-ipv6-address
+```bash
+sudo nano /etc/dhcpcd.conf
+# add the following to the end
+denyinterfaces veth*
+sudo systemctl restart dhcpcd
+```
