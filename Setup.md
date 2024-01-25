@@ -26,30 +26,23 @@ git config --global user.email "user@example.com"
 sudo nano /boot/config.txt
 ```
 
-# PoE Hat Fan Speeds
+# PoE Hat fan speeds enable shutdown button
 dtparam=poe_fan_temp0=58000
 dtparam=poe_fan_temp1=60000
 dtparam=poe_fan_temp2=62000
 dtparam=poe_fan_temp3=64000
+dtoverlay=gpio-shutdown,gpio_pin=4,active_low=1,gpio_pull=up
 
 ### Display
 ```bash
 # enable I2C
 sudo raspi-config 
 cd /usr/bin
-sudo wget https://github.com/mdelgert/PiRackPro/raw/main/SKU_RM0004/display
-sudo chmod +x display
+sudo wget https://github.com/mdelgert/PiRackPro/raw/main/SKU_RM0004/displayRM0004
+sudo chmod +x displayRM0004
 sudo nano /etc/rc.local 
 # add the follow before exit 0
-# display &
-```
-
-## Turn on the button to control the shutdown function
-```bash
-sudo nano /boot/config.txt
-#add the following
-# PiRack power button
-#dtoverlay=gpio-shutdown,gpio_pin=4,active_low=1,gpio_pull=up
+# displayRM0004 &
 ```
 
 ### Samba
