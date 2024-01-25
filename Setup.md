@@ -112,7 +112,6 @@ sudo nano /boot/cmdline.txt
 
 #### Enable TRIM
 https://www.jeffgeerling.com/blog/2020/enabling-trim-on-external-ssd-on-raspberry-pi
-
 ```bash
 sudo fstrim -v /
 lsblk -D
