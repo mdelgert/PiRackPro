@@ -1,50 +1,50 @@
-docker run -dit --name dd1 -p 85:5000 failed2run/dashmachine
-docker run -dit --name dd2 -p 86:5000 failed2run/dashmachine
-docker run -dit --name dd3 -p 87:5000 failed2run/dashmachine
-docker run -dit --name dd4 -p 88:5000 failed2run/dashmachine
-docker run -dit --name dd5 -p 89:5000 failed2run/dashmachine
-docker run -dit --name dd6 -p 90:5000 failed2run/dashmachine
-docker run -dit --name dd7 -p 91:5000 failed2run/dashmachine
-docker run -dit --name dd8 -p 92:5000 failed2run/dashmachine
-docker run -dit --name dd9 -p 93:5000 failed2run/dashmachine
-docker run -dit --name dd10 -p 94:5000 failed2run/dashmachine
-docker run -dit --name cc1 -p 95:5000 failed2run/dashmachine
-docker run -dit --name cc2 -p 96:5000 failed2run/dashmachine
-docker run -dit --name cc3 -p 97:5000 failed2run/dashmachine
-docker run -dit --name cc4 -p 98:5000 failed2run/dashmachine
-docker run -dit --name cc5 -p 99:5000 failed2run/dashmachine
-docker run -dit --name cc6 -p 100:5000 failed2run/dashmachine
-docker run -dit --name cc7 -p 101:5000 failed2run/dashmachine
-docker run -dit --name cc8 -p 102:5000 failed2run/dashmachine
-docker run -dit --name cc9 -p 103:5000 failed2run/dashmachine
-docker run -dit --name cc10 -p 104:5000 failed2run/dashmachine
-docker run -dit --name ee1 -p 105:5000 failed2run/dashmachine
-docker run -dit --name ee2 -p 106:5000 failed2run/dashmachine
-docker run -dit --name ee3 -p 107:5000 failed2run/dashmachine
-docker run -dit --name ee4 -p 108:5000 failed2run/dashmachine
-docker run -dit --name ee5 -p 109:5000 failed2run/dashmachine
-docker run -dit --name ee6 -p 110:5000 failed2run/dashmachine
-docker run -dit --name ee7 -p 111:5000 failed2run/dashmachine
-docker run -dit --name ee8 -p 112:5000 failed2run/dashmachine
-docker run -dit --name ee9 -p 113:5000 failed2run/dashmachine
-docker run -dit --name ee10 -p 114:5000 failed2run/dashmachine
-docker run -dit --name ff1 -p 115:5000 failed2run/dashmachine
-docker run -dit --name ff2 -p 116:5000 failed2run/dashmachine
-docker run -dit --name ff3 -p 117:5000 failed2run/dashmachine
-docker run -dit --name ff4 -p 118:5000 failed2run/dashmachine
-docker run -dit --name ff5 -p 119:5000 failed2run/dashmachine
-docker run -dit --name ff6 -p 120:5000 failed2run/dashmachine
-docker run -dit --name ff7 -p 121:5000 failed2run/dashmachine
-docker run -dit --name ff8 -p 122:5000 failed2run/dashmachine
-docker run -dit --name ff9 -p 123:5000 failed2run/dashmachine
-docker run -dit --name ff10 -p 124:5000 failed2run/dashmachine
-docker run -dit --name gg1 -p 125:5000 failed2run/dashmachine
-docker run -dit --name gg2 -p 126:5000 failed2run/dashmachine
-docker run -dit --name gg3 -p 127:5000 failed2run/dashmachine
-docker run -dit --name gg4 -p 128:5000 failed2run/dashmachine
-docker run -dit --name gg5 -p 129:5000 failed2run/dashmachine
-docker run -dit --name gg6 -p 130:5000 failed2run/dashmachine
-docker run -dit --name gg7 -p 131:5000 failed2run/dashmachine
-docker run -dit --name gg8 -p 132:5000 failed2run/dashmachine
-docker run -dit --name gg9 -p 133:5000 failed2run/dashmachine
-docker run -dit --name gg10 -p 134:5000 failed2run/dashmachine
+docker run -dit --name dd1 --restart=always -p 85:5000 failed2run/dashmachine 
+docker run -dit --name dd2 --restart=always -p 86:5000 failed2run/dashmachine 
+docker run -dit --name dd3 --restart=always -p 87:5000 failed2run/dashmachine 
+docker run -dit --name dd4 --restart=always -p 88:5000 failed2run/dashmachine 
+docker run -dit --name dd5 --restart=always -p 89:5000 failed2run/dashmachine 
+docker run -dit --name dd6 --restart=always -p 90:5000 failed2run/dashmachine 
+docker run -dit --name dd7 --restart=always -p 91:5000 failed2run/dashmachine 
+docker run -dit --name dd8 --restart=always -p 92:5000 failed2run/dashmachine 
+docker run -dit --name dd9 --restart=always -p 93:5000 failed2run/dashmachine 
+docker run -dit --name dd10 --restart=always -p 94:5000 failed2run/dashmachine 
+docker run -dit --name cc1 --restart=always -p 95:5000 failed2run/dashmachine 
+docker run -dit --name cc2 --restart=always -p 96:5000 failed2run/dashmachine 
+docker run -dit --name cc3 --restart=always -p 97:5000 failed2run/dashmachine 
+docker run -dit --name cc4 --restart=always -p 98:5000 failed2run/dashmachine 
+docker run -dit --name cc5 --restart=always -p 99:5000 failed2run/dashmachine 
+docker run -dit --name cc6 --restart=always -p 100:5000 failed2run/dashmachine 
+docker run -dit --name cc7 --restart=always -p 101:5000 failed2run/dashmachine 
+docker run -dit --name cc8 --restart=always -p 102:5000 failed2run/dashmachine 
+docker run -dit --name cc9 --restart=always -p 103:5000 failed2run/dashmachine 
+docker run -dit --name cc10 --restart=always -p 104:5000 failed2run/dashmachine 
+docker run -dit --name ee1 --restart=always -p 105:5000 failed2run/dashmachine 
+docker run -dit --name ee2 --restart=always -p 106:5000 failed2run/dashmachine 
+docker run -dit --name ee3 --restart=always -p 107:5000 failed2run/dashmachine 
+docker run -dit --name ee4 --restart=always -p 108:5000 failed2run/dashmachine 
+docker run -dit --name ee5 --restart=always -p 109:5000 failed2run/dashmachine 
+docker run -dit --name ee6 --restart=always -p 110:5000 failed2run/dashmachine 
+docker run -dit --name ee7 --restart=always -p 111:5000 failed2run/dashmachine 
+docker run -dit --name ee8 --restart=always -p 112:5000 failed2run/dashmachine 
+docker run -dit --name ee9 --restart=always -p 113:5000 failed2run/dashmachine 
+docker run -dit --name ee10 --restart=always -p 114:5000 failed2run/dashmachine 
+docker run -dit --name ff1 --restart=always -p 115:5000 failed2run/dashmachine 
+docker run -dit --name ff2 --restart=always -p 116:5000 failed2run/dashmachine 
+docker run -dit --name ff3 --restart=always -p 117:5000 failed2run/dashmachine 
+docker run -dit --name ff4 --restart=always -p 118:5000 failed2run/dashmachine 
+docker run -dit --name ff5 --restart=always -p 119:5000 failed2run/dashmachine 
+docker run -dit --name ff6 --restart=always -p 120:5000 failed2run/dashmachine 
+docker run -dit --name ff7 --restart=always -p 121:5000 failed2run/dashmachine 
+docker run -dit --name ff8 --restart=always -p 122:5000 failed2run/dashmachine 
+docker run -dit --name ff9 --restart=always -p 123:5000 failed2run/dashmachine 
+docker run -dit --name ff10 --restart=always -p 124:5000 failed2run/dashmachine 
+docker run -dit --name gg1 --restart=always -p 125:5000 failed2run/dashmachine 
+docker run -dit --name gg2 --restart=always -p 126:5000 failed2run/dashmachine 
+docker run -dit --name gg3 --restart=always -p 127:5000 failed2run/dashmachine 
+docker run -dit --name gg4 --restart=always -p 128:5000 failed2run/dashmachine 
+docker run -dit --name gg5 --restart=always -p 129:5000 failed2run/dashmachine 
+docker run -dit --name gg6 --restart=always -p 130:5000 failed2run/dashmachine 
+docker run -dit --name gg7 --restart=always -p 131:5000 failed2run/dashmachine 
+docker run -dit --name gg8 --restart=always -p 132:5000 failed2run/dashmachine 
+docker run -dit --name gg9 --restart=always -p 133:5000 failed2run/dashmachine 
+docker run -dit --name gg10 --restart=always -p 134:5000 failed2run/dashmachine
