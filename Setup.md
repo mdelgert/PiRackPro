@@ -138,9 +138,21 @@ sudo systemctl enable fstrim.timer
 ### Example
 ACTION=="add|change", ATTRS{idVendor}=="174c", ATTRS{idProduct}=="55aa", SUBSYSTEM=="scsi_disk", ATTR{provisioning_mode}="unmap"
 
+# show status disable wlan ipv6 and wifi no need for it
+https://askubuntu.com/questions/597116/how-to-disable-wireless-from-command-line
+```bash
+sudo nmcli radio wifi off # or on to enable
+sudo nmcli connection show
+sudo nmcli connection modify "Wired connection 1" ipv6.method disabled
+sudo nmcli
+```
+
 ### Getting Started with Network Manager
 https://forums.raspberrypi.com/viewtopic.php?t=357739
 New Raspberry PI OS uses nmcli going to see if the Docker issue goes away
+
+### Docker and NetworkManager with multiple NICs causes unstable networkings
+https://www.reddit.com/r/docker/comments/lv4p2q/docker_and_networkmanager_with_multiple_nics/
 
 ### MAY NO LONGER BE AND ISSUE TRYING TESTING DOCKER WITH LOTS OF CONTAINERS ####################################################
 
