@@ -1,0 +1,11 @@
+---
+- name: Disable WiFi and modify Wired connection settings
+  hosts: all
+  become: true  # Run tasks with elevated privileges
+
+  tasks:
+    - name: Turn off WiFi
+      command: "sudo nmcli radio wifi off"
+
+    - name: Modify Wired connection to disable IPv6
+      command: "sudo nmcli connection modify 'Wired connection 1' ipv6.method disabled"
