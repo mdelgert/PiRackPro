@@ -7,11 +7,15 @@ https://galaxy.ansible.com/geerlingguy/docker
 ### Setup
 ```bash
 sudo apt install python3-pip
-python3 -m pip install --user ansible
+# Create a virtual environment
+python3 -m venv venv
+# Activate the virtual environment
+source venv/bin/activate # On Windows, use `venv\Scripts\activate`
+# Now install Ansible within the virtual environment
+pip install ansible
+# When you're done, deactivate the virtual environment
+deactivate
 ```
-
-### Add the following line to .bashrc
-export PATH=$PATH:~/.local/bin
 
 ### Verify the hosts in your inventory.
 ```bash
