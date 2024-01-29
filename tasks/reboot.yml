@@ -1,0 +1,10 @@
+---
+- name: Reboot Host
+  hosts: all
+  become: true  # Run tasks with elevated privileges
+
+  tasks:
+    - name: Reboot the host
+      command: "reboot"
+      async: 0
+      poll: 0

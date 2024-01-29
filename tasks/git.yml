@@ -1,0 +1,10 @@
+---
+- name: Configure Git settings
+  hosts: all
+
+  tasks:
+    - name: Set Git user.name
+      command: "git config --global user.name 'Matthew Elgert'"
+
+    - name: Set Git user.email
+      command: "git config --global user.email 'mdelgert@yahoo.com'"

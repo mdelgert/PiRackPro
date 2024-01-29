@@ -1,0 +1,25 @@
+---
+- name: Update and install packages
+  hosts: all
+  become: true  # Run tasks with elevated privileges
+
+  tasks:
+    - name: Update APT repositories
+      apt:
+        update_cache: yes
+
+    - name: Upgrade packages
+      apt:
+        upgrade: yes
+
+    - name: Install required packages
+      apt:
+        name:
+          - neofetch
+          - htop
+          - libsensors5
+          - restic
+          - python3-pip
+          - git
+          - samba
+        state: present

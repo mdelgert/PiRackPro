@@ -31,12 +31,7 @@ ansible-inventory -i inventory.yaml --list
 ansible all -m ping -i inventory.yaml
 ```
 
-### Apply display
+### Setup
 ```bash
-ansible-playbook -i inventory.yaml tasks/display.yml
-```
-
-### Apply poe hat tasks
-```bash
-ansible-playbook -i inventory.yaml tasks/pirack.yml
+ansible-playbook -i inventory.yaml tasks/setup.yml
 ```

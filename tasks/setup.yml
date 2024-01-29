@@ -1,0 +1,28 @@
+---
+- name: Run Multiple Playbooks
+  hosts: all
+  become: true  # Run tasks with elevated privileges
+
+- name: Packages
+  ansible.builtin.import_playbook: packages.yml
+
+- name: Git
+  ansible.builtin.import_playbook: git.yml
+
+- name: NMCLI
+  ansible.builtin.import_playbook: nmcli.yml
+
+- name: Docker
+  ansible.builtin.import_playbook: docker.yml
+
+- name: POE
+  ansible.builtin.import_playbook: poe.yml
+
+- name: Trim
+  ansible.builtin.import_playbook: trim.yml
+
+- name: Pirack
+  ansible.builtin.import_playbook: pirack.yml
+
+- name: Reboot
+  ansible.builtin.import_playbook: reboot.yml
