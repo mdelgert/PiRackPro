@@ -1,0 +1,14 @@
+---
+- name: Install Docker and add user to docker group
+  hosts: all
+  become: true  # Run tasks with elevated privileges
+
+  tasks:
+    - name: Install Docker
+      shell: "curl -fsSL https://get.docker.com | sudo bash"
+
+    - name: Add user to docker group
+      user:
+        name: mdelgert
+        append: yes
+        groups: docker

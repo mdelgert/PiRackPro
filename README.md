@@ -11,28 +11,32 @@ https://github.com/alexb7217/Pi-Rack-Pro_SKU_RM0004-Install/tree/main
 ### Setup
 ```bash
 sudo apt install python3-pip
-python3 -m pip install --user ansible
+# Create a virtual environment
+python3 -m venv venv
+# Activate the virtual environment
+source venv/bin/activate # On Windows, use `venv\Scripts\activate`
+# Now install Ansible within the virtual environment
+pip install ansible
+# When you're done, deactivate the virtual environment
+deactivate
 ```
-
-### Add the following line to .bashrc
-export PATH=$PATH:~/.local/bin
 
 ### Verify the hosts in your inventory.
 ```bash
-ansible-inventory -i inventory_all.yaml --list
+ansible-inventory -i inventory.yaml --list
 ```
 
 ### Ping inventory.
 ```bash
-ansible all -m ping -i inventory_all.yaml
+ansible all -m ping -i inventory.yaml
 ```
 
-### Example apply tasks
+### Apply display
 ```bash
-ansible-playbook -i inventory_all.yaml tasks_apply.yaml
+ansible-playbook -i inventory.yaml tasks/display.yml
 ```
 
-### Example remove tasks
+### Apply poe hat tasks
 ```bash
-ansible-playbook -i inventory_all.yaml tasks_remove.yaml
+ansible-playbook -i inventory.yaml tasks/pirack.yml
 ```

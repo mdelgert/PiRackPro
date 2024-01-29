@@ -1,0 +1,59 @@
+---
+- name: Ensure Poe hat fan configuration in /boot/config.txt
+  hosts: all
+  become: true  # Run tasks with elevated privileges
+
+  tasks:
+
+  # - name: Create a backup of /boot/config.txt with timestamp
+  #   command: "cp /boot/config.txt /boot/config.txt.{{ ansible_date_time.epoch }}"
+  #   args:
+  #     creates: "/boot/config.txt.{{ ansible_date_time.epoch }}"
+  #   changed_when: false  # Do not consider it as changed if the backup already exists
+
+  - name: Uncomment dtparam line in file to boot config
+    lineinfile:
+      dest: /boot/config.txt
+      regexp: '^#dtparam=i2c_arm=on'
+      line: 'dtparam=i2c_arm=on'
+      state: present
+
+  - name: add i2c baudrate to boot config
+    lineinfile:
+      dest: /boot/config.txt
+      create: yes
+      line: 'i2c_arm_baudrate=400000'
+      state: present
+
+  - name: add dtoverlay line to boot config (enable button)
+    lineinfile:
+      dest: /boot/config.txt
+      create: yes
+      line: 'dtoverlay=gpio-shutdown,gpio_pin=4,active_low=1,gpio_pull=up'
+      state: present
+
+  - name: manually add i2c-dev to modules (beware future overwrites)
+    lineinfile:
+      dest: /etc/modules
+      create: yes
+      line: 'i2c-dev'
+      state: present
+
+  - name: Download displayRM0004
+    command: "sudo wget https://github.com/mdelgert/PiRackPro/raw/main/SKU_RM0004/displayRM0004"
+    args:
+      chdir: /usr/bin
+
+  - name: Make displayRM0004 executable
+    command: "sudo chmod +x displayRM0004"
+    args:
+      chdir: /usr/bin
+
+  - name: add display command to rc.local to run display on boot
+    blockinfile:
+      path: /etc/rc.local
+      marker: "# {mark} ANSIBLE MANAGED BLOCK #"
+      insertbefore: 'exit 0'
+      state: present
+      block: |
+        displayRM0004 &

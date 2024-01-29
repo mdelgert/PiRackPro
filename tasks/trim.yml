@@ -1,0 +1,20 @@
+---
+- name: Set provisioning mode
+  hosts: all
+  become: true  # Run tasks with elevated privileges
+  tasks:
+    
+    - name: Set provisioning mode
+      command: "echo unmap > /sys/devices/platform/scb/fd500000.pcie/pci0000:00/0000:00:00.0/0000:01:00.0/usb2/2-2/2-2:1.0/host0/target0:0:0/0:0:0:0/scsi_disk/0:0:0:0/provisioning_mode"
+    
+    - name: Create udev rule file
+      copy:
+        content: 'ACTION=="add|change", ATTRS{idVendor}=="174c", ATTRS{idProduct}=="55aa", SUBSYSTEM=="scsi_disk", ATTR{provisioning_mode}="unmap"'
+        dest: /etc/udev/rules.d/10-trim.rules
+        mode: 0644
+
+    - name: Enable fstrim.timer
+      systemd:
+        name: fstrim.timer
+        enabled: yes
+        state: started
