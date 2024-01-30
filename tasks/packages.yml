@@ -21,5 +21,4 @@
           - restic
           - python3-pip
           - git
-          - samba
         state: present
