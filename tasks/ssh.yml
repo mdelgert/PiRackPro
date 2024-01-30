@@ -1,0 +1,16 @@
+---
+- name: Sync SSH directory
+  hosts: clients
+
+  tasks:
+    - name: Ensure the SSH directory exists
+      file:
+        path: "{{ ansible_user_dir }}/.ssh"
+        state: directory
+        mode: '0700'
+
+    - name: Synchronize the SSH directory
+      synchronize:
+        src: "{{ lookup('env', 'HOME') }}/.ssh/"
+        dest: "{{ ansible_user_dir }}/.ssh/"
+

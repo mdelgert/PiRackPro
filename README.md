@@ -23,15 +23,20 @@ deactivate
 
 ### Verify the hosts in your inventory.
 ```bash
-ansible-inventory -i inventory.yaml --list
+ansible-inventory -i all.yaml --list
 ```
 
 ### Ping inventory.
 ```bash
-ansible all -m ping -i inventory.yaml
+ansible all -m ping -i all.yaml
 ```
 
 ### Setup
 ```bash
-ansible-playbook -i inventory.yaml tasks/setup.yml
+ansible-playbook -i all.yaml tasks/setup.yml
+```
+
+### SSH
+```bash
+ansible-playbook -i clients.yaml tasks/ssh.yml
 ```

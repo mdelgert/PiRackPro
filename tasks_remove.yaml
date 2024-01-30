@@ -1,6 +1,0 @@
----
-- hosts: all
-  become: yes
-  tasks:
-  - name: Remove PoE Hat Fan Speeds
-    include_tasks: tasks/poe_fan_speeds_remove.yml

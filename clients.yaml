@@ -1,0 +1,11 @@
+clients:
+  hosts:
+    vm02:
+      ansible_host: p2 
+      ansible_user: mdelgert
+    vm03:
+      ansible_host: p3
+      ansible_user: mdelgert
+    # vm04:
+    #   ansible_host: p4
+    #   ansible_user: mdelgert

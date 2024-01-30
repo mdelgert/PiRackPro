@@ -3,20 +3,20 @@
   hosts: all
   become: true  # Run tasks with elevated privileges
 
-# - name: Packages
-#   ansible.builtin.import_playbook: packages.yml
+- name: Packages
+  ansible.builtin.import_playbook: packages.yml
 
-# - name: Git
-#   ansible.builtin.import_playbook: git.yml
+- name: Git
+  ansible.builtin.import_playbook: git.yml
 
-# - name: NMCLI
-#   ansible.builtin.import_playbook: nmcli.yml
+- name: NMCLI
+  ansible.builtin.import_playbook: nmcli.yml
 
-# - name: Docker
-#   ansible.builtin.import_playbook: docker.yml
+- name: Docker
+  ansible.builtin.import_playbook: docker.yml
 
-# - name: Trim
-#   ansible.builtin.import_playbook: trim.yml
+- name: Trim
+  ansible.builtin.import_playbook: trim.yml
 
 - name: POE
   ansible.builtin.import_playbook: poe.yml
