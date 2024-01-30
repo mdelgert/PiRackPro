@@ -1,12 +1,12 @@
 ---
-- name: Ensure Poe hat fan configuration in /boot/config.txt
+- name: Ensure Poe hat fan configuration in /boot/firmware/config.txt
   hosts: all
   become: true  # Run tasks with elevated privileges
 
   tasks:
   - name: Insert PoE Hat Fan Speeds into config.txt
     blockinfile:
-      path: /boot/config.txt
+      path: /boot/firmware/config.txt
       block: |
         # PoE Hat Fan Speeds
         dtparam=poe_fan_temp0=58000
