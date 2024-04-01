@@ -11,6 +11,7 @@ https://github.com/alexb7217/Pi-Rack-Pro_SKU_RM0004-Install/tree/main
 ### Setup
 ```bash
 sudo apt install python3-pip
+sudo apt-get install python3-venv
 # Create a virtual environment
 python3 -m venv venv
 # Activate the virtual environment
@@ -34,9 +35,4 @@ ansible all -m ping -i all.yaml
 ### Setup
 ```bash
 ansible-playbook -i all.yaml tasks/setup.yml
-```
-
-### SSH
-```bash
-ansible-playbook -i clients.yaml tasks/ssh.yml
 ```

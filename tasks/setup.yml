@@ -24,5 +24,8 @@
 - name: Pirack
   ansible.builtin.import_playbook: pirack.yml
 
+- name: SSH Sync
+  ansible.builtin.import_playbook: ssh.yml
+
 - name: Reboot
   ansible.builtin.import_playbook: reboot.yml

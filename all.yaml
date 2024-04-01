@@ -1,11 +1,11 @@
 all:
   hosts:
-    vm01:
-      ansible_host: p1
-      ansible_user: mdelgert
-    vm02:
-      ansible_host: p2 
-      ansible_user: mdelgert
+    # vm01:
+    #   ansible_host: p1
+    #   ansible_user: mdelgert
+    # vm02:
+    #   ansible_host: p2 
+    #   ansible_user: mdelgert
     vm03:
       ansible_host: p3
       ansible_user: mdelgert
