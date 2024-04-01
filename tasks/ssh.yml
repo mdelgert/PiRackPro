@@ -1,6 +1,6 @@
 ---
 - name: Sync SSH directory
-  hosts: clients
+  hosts: all
 
   tasks:
     - name: Ensure the SSH directory exists

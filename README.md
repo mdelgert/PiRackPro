@@ -36,3 +36,8 @@ ansible all -m ping -i all.yaml
 ```bash
 ansible-playbook -i all.yaml tasks/setup.yml
 ```
+
+### Setup
+```bash
+ansible-playbook -i all.yaml tasks/ssh.yml
+```
